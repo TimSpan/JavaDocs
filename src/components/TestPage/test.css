@@ -1,0 +1,13 @@
+.svg {
+  /* width: 100px;
+  height: 100px; */
+  height: 8em;
+  width: auto;
+  margin-left: 0.33em;
+}
+.svg_container {
+  width: 50px;
+}
+.bigFont {
+  font-size: 50px;
+}
