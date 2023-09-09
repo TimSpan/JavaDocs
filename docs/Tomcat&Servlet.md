@@ -90,14 +90,9 @@ project-name
 
 ### 使用骨架创建
 
-```
 ![](./images/tomcat_1.png)
+
 ![](./images/tomcat_2.png)
-```
-
-
-
-
 
 > 等待下载完之后项目就创建好了
 
@@ -115,18 +110,17 @@ project-name
 /opt/homebrew/Cellar/tomcat/10.1.13/libexec
 ```
 
-```
+
+
 ![](./images/tomcat_3.png)
+
 ![](./images/tomcat_4.png)
-```
 
+![](./images/tomcat_5.png)
 
+![](./images/tomcat_6.png)
 
-
-
-
-
-
+![](./images/tomcat_7.png)
 
 :::Tip
 
@@ -138,14 +132,11 @@ project-name
 
 :::
 
-```
+
+
 ![](./images/tomcat_8.png)
+
 ![](./images/tomcat_9.png)
-```
-
-
-
-
 
 
 
@@ -154,10 +145,6 @@ project-name
 
 
 ### 方式二：使用Tomcat Maven插件
-
-
-
-
 
 ```xml
     <plugins>
@@ -168,10 +155,6 @@ project-name
       </plugin>
     </plugins>
 ```
-
-
-
-
 
 ## Servlet
 
