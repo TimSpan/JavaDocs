@@ -11,7 +11,9 @@ const config = {
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
 
-  baseUrl: '/JavaDocs/',
+  // baseUrl: '/JavaDocs/',
+  baseUrl: '/',
+
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
   onBrokenLinks: 'throw',

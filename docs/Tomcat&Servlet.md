@@ -156,7 +156,15 @@ project-name
     </plugins>
 ```
 
-## Servlet
+
+
+![](./images/tomcat_12.png)
+
+![](./images/tomcat_11.png)
+
+
+
+## Servlet快速入门
 
 1. 创建 web项目，导入 Servlet依赖坐标
 
@@ -178,7 +186,8 @@ project-name
      
      import javax.servlet.*;
      import java.io.IOException;
-     
+     // highlight-next-line
+     @WebServlet("/demo1")
      public class ServletDemo1 implements Servlet {
          public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
              System.out.println("hello Servlet");
@@ -208,10 +217,78 @@ project-name
 
    - ```js
      @WebServlet("/demo1")
-     public class ServletDemo1 implements Servlet{}
      ```
 
 4. 访问:启动 Tomcat，浏览器输入URL 访问该Servlet
+
+
+
+## Servlet执行流程
+
+1. Servlet 由谁创建? Servlet方法由谁调用?
+   - Servlet由web服务器创建，Servlet方法由web服务器调用
+2. 服务器怎么知道servlet中一定有service方法?
+   - 因为我们自定义的servlet，必须实现Servlet接口并复写其方法，而Servlet接口中有service方法
+
+
+
+## Servlet生命周期
+
+Servlet运行在Servlet容器(web服务器)中，其生命周期由容器来管理，分为4个阶段：
+
+1. `加载和实例化`：默认情况下，当Servlet第一欠被访问时，由容器创建Servlet对象
+2.  `初始化`：在servlet实例化之后，容器将调用servlet的`init()`方法初始化这个对象，完成一些如加载配置文件、创建连接等初始化的工作。该方法`只调用一次`
+3. `请求处理`：每次请求Servlet时，Servlet容器会调用Servlet的`service()`方法对请求进行处理
+4. `服务终止`：当需要释放内存或者容器关闭时，容器就会调用Servlet实例的destroy()方法完成资源的释放。在destroy0)方法调用之后，容器会释放这个Servlet实例，该实例随后会被Java的垃圾收集器所回收
+
+```js
+@WebServlet(urlPatterns = "/demo",loadOnStartup = 1)
+```
+
+1. 负整数：第一次被访问时创建Servlet对象
+2. 0 或正整数: 服务器启动时创建Servlet对象，数字越小优先级越高
+
+
+
+
+
+## Servlet方法介绍
+
+初始化方法，在Servlet被创建时执行，只执行一次
+
+```js
+void init(ServletConfig config)
+```
+
+提供服务方法，每次Servlet被访问，都会调用该方法
+
+```js
+void service(ServletRequest req, ServletResponse res)
+```
+
+销毁方法，当Servlet被销毁时，调用该方法。在内存释放或服务器关闭时销毁Servlet
+
+```js
+void destroy()
+```
+
+获取ServletConfig对象
+
+```js
+ServletConfig getServletConfig()
+```
+
+获取Servlet信息
+
+```js
+String getServletInfo()
+```
+
+## Servlet体系结构
+
+
+
+## urlPattern配置
 
 
 
