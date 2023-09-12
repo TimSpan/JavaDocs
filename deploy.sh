@@ -11,8 +11,8 @@ git init
 git add -A
 git commit -m 'bash_update'
 # 如果发布到 https://<USERNAME>.github.io
-# git push -f git@gitee.com:timspan/java-docs.git main:pages
-git push -f git@github.com:TimSpan/JavaDocs.git main:pages
+git push -f git@gitee.com:timspan/java-docs.git main:pages
+# git push -f git@github.com:TimSpan/JavaDocs.git master:pages
 
 
 cd -
