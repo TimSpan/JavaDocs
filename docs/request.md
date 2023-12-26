@@ -135,9 +135,135 @@ req.setCharacterEncoding("UTF_8");
 req.getRequestDispatcher("资源B路径").forward(req,resp);
 ```
 
+请求转发特点:
+
+- 浏览器地址栏路径不发生变化
+- 只能转发到当前服务器的内部资源
+- 一次请求，可以在转发的资源间使用request共享数据
 
 
-## Response
+
+
+
+## Response设置响应数据
+
+响应数据分为3部分
+1. 响应行:
+  HTTP/1.1 200 OK
+
+  ```js
+  void setStatus(int sc):设置响应状态码
+  ```
+
+  
+
+2. 响应头:Content-Type: text/html
+
+  ```js
+  void setHeader(String name, String value): 设置响应头键值对
+  ```
+
+  
+
+3. 响应体
+
+  ```
+  <html><head>head><body></body></html>
+  ```
+
+  ```js
+  PrintWriter getWriter(): 获取字符输出流
+  ```
+
+  ```js
+  ServletOutputStream getOutputStream():获取字节输出流
+  ```
+
+## Response重定向
+
+![](./images/req_3.png)
+
+
+
+重定向特点:
+
+- 浏览器地址栏路径发生变化
+- 可以重定向到任意位置的资源 (服务器内部、外部均可)
+- 两次请求，不能在多个资源使用request共享数据
+
+### 路径
+
+明确路径谁使用?
+
+- 浏览器使用: 需要加虚拟目录(项目访问路径)
+- 服务端使用: 不需要加虚拟目录
+
+
+
+## Response响应字符数据
+
+使用:
+
+1 、通过Response对象获取字符输出流
+
+```js
+PrintWriter writer = resp.getWriter( );
+```
+
+2、写数据
+
+```js
+writer.write("aaa");
+```
+
+
+
+:::tip 注意
+
+- 该流不需要关闭，随着响应结束，response对象销毁，由服务器关闭
+
+- 中文数据乱码: 原因通过Response获取的字符输出流默认编码: ISO-8859-1
+
+- ```js
+  resp.setContentType("text/html;charset=utf-8");
+  ```
+
+:::
+
+
+
+## Response响应字节数据
+
+使用:
+通过Response对象获取字节输出流
+
+```js
+ServletOutputStream outputStream = resp.getOutputStream()
+```
+
+写数据
+
+```js
+outputStream.write(字节数据)
+```
+
+lOUtils工具类使用
+
+1、导入坐标
+
+```xml
+<dependency>
+	<groupld>commons-io</groupld>
+	<artifactld>commons-io</artifactld>
+	<version>2.6</version>
+</dependency>
+```
+
+2 、使用
+
+```js
+IOUtils.cogy(输入流,输出流);
+```
 
 
 
